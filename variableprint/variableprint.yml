@@ -1,0 +1,11 @@
+---
+- name: Variable print sample
+  hosts: all
+  vars:
+    fruit: "apple"
+
+  tasks:
+
+    - name: Print variable
+      debug:
+        msg: "Print the value of variable {{ fruit }}"
