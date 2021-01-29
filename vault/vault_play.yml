@@ -1,0 +1,11 @@
+---
+- name: Vault sample
+  hosts: all
+  become: no
+
+  tasks:  
+    - include_vars: vault.yml
+
+    - name: Print variable
+      debug:
+        msg: "Print the value of variable {{ fruit }}"
