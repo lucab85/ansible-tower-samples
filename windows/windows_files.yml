@@ -1,0 +1,65 @@
+---
+- name: Setup a windows target
+  hosts: all
+  become: no
+  gather_facts: no
+  vars:
+    - file_source: "example.txt"
+    - file_path: 'C:\Temp'
+    - file_destination: '{{ file_path }}\{{ file_source }}'
+    - search_patterns: [ '*.txt' ]
+    - line_regex: '^configuration='
+    - line_in_file: "configuration=true"
+    - username: "alice"
+    - password: "SimplePassword1234@"
+    - group: "Developers"
+
+  tasks:  
+    - name: Test connection
+      win_ping:
+
+    - name: Create directory structure
+      win_file:
+        path: "{{ file_path }}"
+        state: directory
+
+    - name: Copy a single file
+      win_copy:
+        src: "{{ file_source }}"
+        dest: "{{ file_destination }}"
+
+    - name: Find files using powershell wildcards
+      win_find:
+        paths: "{{ file_path }}"
+        patterns: "{{ search_patterns }}"
+      register: find_result
+
+    - name: List results
+      debug:
+        msg: "{{ item.path | basename }}"
+      loop: "{{ find_result.files }}"
+
+    - name: Add a line in a file
+      win_lineinfile:
+        path: "{{ item.path }}"
+        regex: "{{ line_regex }}"
+        line: "{{ line_in_file }}"
+      loop: "{{ find_result.files }}"
+
+    - name: Ensure user "{{ username }}" is present
+      win_user:
+        name: "{{ username }}"
+        password: "{{ password }}"
+        state: present
+
+    - name: Ensure group "{{ group }}" is present
+      win_group:
+        name: "{{ group }}"
+        description: "{{ group }}"
+        state: present
+
+    - name: Ensure user "{{ username }}" is in group "{{ group }}"
+      win_group_membership:
+        name: "{{ group }}"
+        members: "{{ username }}"
+        state: present

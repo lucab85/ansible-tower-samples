@@ -1,0 +1,36 @@
+---
+- name: Setup a windows target
+  hosts: all
+  become: no
+  gather_facts: no
+  vars:
+    - timezone: GMT Standard Time
+    - windows_updates:
+      - SecurityUpdates
+      - CriticalUpdates
+      - UpdateRollups
+    - packages:
+      - git
+      - notepadplusplus
+
+  tasks:  
+    - name: Test connection
+      win_ping:
+
+    - name: Set timezone to '{{ timezone }}'
+      win_timezone:
+        timezone: "{{ timezone }}"
+
+    - name: Reboot a machine that might have lots of updates
+      win_reboot:
+        reboot_timeout: 3600
+
+    - name: Install all security, critical, and rollup updates without a scheduled task
+      win_updates:
+        category_names: "{{ windows_updates }}"
+        reboot: yes
+
+    - name: Install packages
+      win_chocolatey:
+        name: "{{ packages }}"
+        state: present
