@@ -1,0 +1,45 @@
+---
+- name: Setup a windows target
+  hosts: all
+  become: no
+  gather_facts: no
+  vars:
+    - username: "ansible"
+    - file_source: "id_rsa.pub"
+    - file_path: '.ssh'
+    - file_destination: '{{ file_path }}\{{ file_source }}'
+
+  tasks:  
+    - name: Test connection
+      win_ping:
+
+    - name: install the Win32-OpenSSH service
+      win_chocolatey:
+        name: openssh
+        package_params: /SSHServerFeature
+        state: present
+
+    - name: Set the default shell to PowerShell
+      win_regedit:
+        path: HKLM:\SOFTWARE\OpenSSH
+        name: DefaultShell
+        data: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+        type: string
+        state: present
+
+    - name: Create directory structure
+      win_file:
+        path: "{{ file_path }}"
+        state: directory
+
+    - name: Copy "{{ file_source }}" file
+      win_copy:
+        src: "{{ file_source }}"
+        dest: "{{ file_destination }}"
+      with_items: '{{ file_source }}'
+
+    - name: Authorize "{{ file_source }}" file
+      win_copy:
+        src: "{{ file_source }}"
+        dest: '{{ file_path }}\authorized_keys'
+      with_items: '{{ file_source }}'
