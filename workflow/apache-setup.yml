@@ -1,0 +1,12 @@
+---
+- hosts: all
+  name: Install the web server
+  become: yes
+  gather_facts: no
+
+  tasks:
+
+  - name: install apache
+    yum:
+      name: "httpd"
+      state: present
