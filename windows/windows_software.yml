@@ -13,7 +13,7 @@
       - git
       - notepadplusplus
 
-  tasks:  
+  tasks:
     - name: Test connection
       win_ping:
 

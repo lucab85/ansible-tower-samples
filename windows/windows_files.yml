@@ -14,7 +14,7 @@
     - password: "SimplePassword1234@"
     - group: "Developers"
 
-  tasks:  
+  tasks:
     - name: Test connection
       win_ping:
 
