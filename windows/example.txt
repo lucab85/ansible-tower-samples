@@ -1,2 +1,2 @@
-Example file for windows playbooks
+example.txt file for windows playbooks
 configuration=false
