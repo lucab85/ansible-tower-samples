@@ -1,8 +1,8 @@
 ---
 - name: Setup a windows target
   hosts: all
-  become: no
-  gather_facts: no
+  become: false
+  gather_facts: false
   vars:
     - username: "ansible"
     - file_source: "id_rsa.pub"

@@ -1,9 +1,9 @@
 ---
 - name: Vault sample
   hosts: all
-  become: no
+  become: false
 
-  tasks:  
+  tasks:
     - include_vars: vault.yml
 
     - name: Print variable

@@ -1,4 +1,4 @@
 ---
 - name: Refresh fact cache
   hosts: all
-  gather_facts: yes
+  gather_facts: true

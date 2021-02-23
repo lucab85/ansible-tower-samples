@@ -1,13 +1,13 @@
 ---
 - name: Setup a windows target
   hosts: all
-  become: no
-  gather_facts: no
+  become: false
+  gather_facts: false
   vars:
     - file_source: "example.txt"
     - file_path: 'C:\Temp'
     - file_destination: '{{ file_path }}\{{ file_source }}'
-    - search_patterns: [ '*.txt' ]
+    - search_patterns: ['*.txt']
     - line_regex: '^configuration='
     - line_in_file: "configuration=true"
     - username: "alice"
