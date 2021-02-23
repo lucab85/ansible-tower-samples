@@ -4,7 +4,7 @@
   become: false
 
   tasks:
-    - name: include Ansible Vault 
+    - name: include Ansible Vault
       include_vars: vault.yml
 
     - name: Print variable
