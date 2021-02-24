@@ -1,6 +1,7 @@
 ---
 - name: motd sample
   hosts: all
+  become: true
   vars:
    - system_owner: user@host.example.com
 
