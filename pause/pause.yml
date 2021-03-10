@@ -6,9 +6,9 @@
 
   tasks:
 
-    - name: Pause for {{ wait_minutes }} minute(s)
+    - name: Pause for {{ wait_minutes | int }} minute(s)
       pause:
-        minutes: wait_minutes
+        minutes: "{{ wait_minutes | int }}"
 
     - name: Hello Message
       debug:
