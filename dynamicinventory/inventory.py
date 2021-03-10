@@ -8,6 +8,7 @@ import os
 import sys
 import argparse
 import json
+import time
 
 class ExampleInventory(object):
 
@@ -30,6 +31,7 @@ class ExampleInventory(object):
 
     # Example inventory for testing.
     def example_inventory(self):
+        time.sleep(30)
         return {
             'group': {
                 'hosts': ['192.168.0.100'],
