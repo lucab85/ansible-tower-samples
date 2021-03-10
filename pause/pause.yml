@@ -1,0 +1,15 @@
+---
+- name: Wait Sample
+  hosts: all
+  vars:
+    wait_minutes: 1
+
+  tasks:
+
+    - name: Pause for {{ wait_minutes }} minute(s)
+      pause:
+        minutes: wait_minutes
+
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
