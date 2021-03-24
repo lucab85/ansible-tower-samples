@@ -1,3 +1,4 @@
+# yamllint disable-file
 ---
 name: CI
 'on':
@@ -7,10 +8,6 @@ name: CI
       - master
   schedule:
     - cron: "0 6 * * 3"
-
-defaults:
-  run:
-    working-directory: 'ansible-tower-samples'
 
 jobs:
 
@@ -37,4 +34,4 @@ jobs:
 
       - name: ANSIBLE linter.
         run: |
-          ansible-lint -v
+          ansible-lint -vvvv
