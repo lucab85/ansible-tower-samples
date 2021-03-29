@@ -1,6 +1,7 @@
 ---
 - name: NTP using system-roles
   hosts: all
+  become: true
   vars:
     timesync_ntp_servers:
       - hostname: 0.pool.ntp.org
