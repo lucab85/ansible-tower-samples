@@ -3,4 +3,4 @@
   hosts: all
   become: true
   roles:
-    - motd
+    - ansible-role-motd
