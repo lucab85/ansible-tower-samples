@@ -1,0 +1,6 @@
+---
+- name: MOTD using Galaxy
+  hosts: all
+  become: true
+  roles:
+    - motd
