@@ -1,3 +1,4 @@
 ---
 roles:
   - name: jtyr.motd
+    source: https://galaxy.ansible.com
