@@ -1,0 +1,8 @@
+---
+- name: Get tower_job_id
+  hosts: all
+  become: false
+  tasks:
+    - name: Get tower_job_id
+      ansible.builtin.debug:
+        msg: "{{ internal_tower_job_id }}"
