@@ -7,3 +7,4 @@
       ansible.builtin.set_stats:
         data:
           internal_tower_job_id: "{{ tower_job_id }}"
+        per_host: false
