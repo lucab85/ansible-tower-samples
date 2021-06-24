@@ -7,5 +7,5 @@
   tasks:
 
     - name: Print variable
-      debug:
+      ansible.builtin.debug:
         msg: "Print the value of variable {{ fruit }}"
