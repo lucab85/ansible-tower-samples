@@ -8,7 +8,6 @@
     towerhost: "localhost"
     hostname: "sample.example.com"
     inventory: "Demo inventory"
-    organization: "Default"
 
   tasks:
     - name: "Add {{ hostname }} to Tower inventory"
@@ -19,5 +18,4 @@
         tower_password: "{{ towerpass }}"
         tower_host: "{{ towerhost }}"
         tower_verify_ssl: false
-        organization: "{{ organization }}"
         state: present
