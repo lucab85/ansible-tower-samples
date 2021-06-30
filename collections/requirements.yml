@@ -1,3 +1,5 @@
 ---
 collections:
   - name: redhat.rhel_system_roles
+
+  - name: awx.awx

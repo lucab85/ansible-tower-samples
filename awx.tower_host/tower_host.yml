@@ -1,5 +1,5 @@
 ---
-- name: Sample tower_host module
+- name: Sample awx.awx.tower_host module
   hosts: all
   gather_facts: true
   vars:
@@ -11,7 +11,7 @@
 
   tasks:
     - name: "Add {{ hostname }} to Tower Inventory"
-      tower_host:
+      awx.awx.tower_host:
         name: "{{ hostname }}"
         inventory: "{{ inventory }}"
         tower_username: "{{ toweruser }}"
