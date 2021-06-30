@@ -1,0 +1,21 @@
+---
+- name: Sample ansible.tower.tower_host module
+  hosts: all
+  gather_facts: true
+  vars:
+    toweruser: "admin"
+    towerpass: "redhat"
+    towerhost: "localhost"
+    hostname: "sample.example.com"
+    inventory: "Demo Inventory"
+
+  tasks:
+    - name: "Add {{ hostname }} to Tower Inventory"
+      ansible.tower.tower_host:
+        name: "{{ hostname }}"
+        inventory: "{{ inventory }}"
+        tower_username: "{{ toweruser }}"
+        tower_password: "{{ towerpass }}"
+        tower_host: "{{ towerhost }}"
+        tower_verify_ssl: false
+        state: present
