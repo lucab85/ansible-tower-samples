@@ -7,7 +7,7 @@
     towerpass: "redhat"
     towerhost: "localhost"
     hostname: "sample.example.com"
-    inventory: "Demo inventory"
+    inventory: "Demo Inventory"
 
   tasks:
     - name: "Add {{ hostname }} to Tower inventory"
