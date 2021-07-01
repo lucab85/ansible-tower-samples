@@ -1,2 +1,2 @@
 ---
-http_service: nginx
+lb_service: nginx
