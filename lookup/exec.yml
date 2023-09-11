@@ -5,3 +5,7 @@
     - name: Retrieve token from plugin
       ansible.builtin.debug:
         msg: "{{ lookup('token') }}"
+
+    - name: Read file from plugin
+      ansible.builtin.debug:
+        msg: "{{ lookup('fileread', '/etc/hosts') }}"
