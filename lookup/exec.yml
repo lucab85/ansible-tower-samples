@@ -1,0 +1,7 @@
+---
+- name: Exec lookup plugin
+  hosts: all
+  tasks:
+    - name: Retrieve token from plugin
+      ansible.builtin.debug:
+        msg: "{{ lookup('token') }}"
