@@ -8,4 +8,4 @@
 
     - name: Read file from plugin
       ansible.builtin.debug:
-        msg: "{{ lookup('fileread', '/etc/hosts') }}"
+        msg: "{{ lookup('fileread', 'example.txt') }}"
